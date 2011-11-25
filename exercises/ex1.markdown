@@ -2,8 +2,6 @@
 title: JavaScript Functions and Methods
 ---
 
-## Implement JavaScript functions
-
 Implement the following four JavaScript functions.
 
 **`time_between_in_words`**`(from_date, to_date)`
