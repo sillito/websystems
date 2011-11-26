@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+
+  <title>{{ page.title }}</title>
+
+  <style type="text/css">
+    body {
+      margin-top: 1.0em;
+      background-color: #ededee;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    #container {
+      margin: 0 auto;
+      width: 720px;
+    }
+    h1 { font-size: 3.8em; color: #121211; margin-bottom: 3px; }
+    h1 .small { font-size: 0.4em; }
+    h1 a { text-decoration: none }
+    h2 { font-size: 1.5em; color: #121211; }
+    h3 { text-align: center; color: #121211; }
+    a { color: #121211; }
+    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
+    .download { float: right; }
+    pre { background: #000; color: #fff; padding: 15px;}
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .footer { padding-top:30px; color:#666; font-size:0.85em;}
+  </style>
+</head>
+
+<body>
+	<div id="container">
+		{{content}}
+		
+		<div class="footer">
+			 {% include license.ext %}
+		</div>
+	</div>
+
+</body>
+</html>

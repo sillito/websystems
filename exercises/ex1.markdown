@@ -1,5 +1,6 @@
 ---
 title: JavaScript Functions and Methods
+layout: default
 ---
 
 Implement the following four JavaScript functions.
