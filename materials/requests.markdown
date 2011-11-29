@@ -30,7 +30,7 @@ HTTP requests are sent by the browser when the user enters a URL in an address b
 For our purposes, the scheme will be either http (for unencrypted communication) or https (for encrypted communication using SSL/TLS). A query string contains (key-value) data to send from the user-agent to the web server. Here is a URL with a query string example (everything after the `?`):
 
 [http://www.nytimes.com/2011/11/24/sports/football/ndamukong-suh-pushes-line-and-anchors-the-detroit-lions.html?ref=sports](http://www.nytimes.com/2011/11/24/sports/football/ndamukong-suh-pushes-line-and-anchors-the-detroit-lions.html?ref=sports)
-	
+
 The fragment id is a reference to an element in the page (e.g., a section of the page). Here, for example, is the URL for the _Academics_ section of the Wikipedia article about the _University of Calgary_:
 
 [http://en.wikipedia.org/wiki/University_of_calgary#Academics](http://en.wikipedia.org/wiki/University_of_calgary#Academics)
@@ -41,6 +41,30 @@ In the above example, nor port is specified so port 80 is assumed, so the follow
 
 [More details on URL syntax, etc](http://en.wikipedia.org/wiki/Uniform_Resource_Locator)  
 [See also URIs](http://en.wikipedia.org/wiki/Uniform_resource_identifier)
+
+### Encoding and Decoding URLs
+
+Not all characters are legal in a URL (e.g., a space) and of course some characters have special meaning in a URL (e.g., `?`) and are called reserved characters, If we are passing data as part of a request, by putting it in the query string of a URL that data might have to be "encoded" (or "escaped" or "percent encoded" as it is also called). The way this works is that illegal or reserved characters are translated to a special character sequence starting with a `%` as in the following table:
+
+	Char	Encoded As	Why
+	--------------------------------
+	space	%20			illegal
+	"		%22			illegal
+	#		%23			reserved
+	%		%25			special case
+	/		%2F			reserved
+	etc		...			...
+
+For example, if you want to send data in the query string of a URL with a space in it the space has to be encoded (as %20). The [encodeURI](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/encodeURI) or [encodeURIComponent](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/encodeURIComponent) JavaScript function can be used for this purpose:
+
+	encodeURIComponent("my mark was > 90%")
+	'my%20mark%20was%20%3E%2090%25'
+
+The reverse process is called decoding and can be performed with [decodeURI](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/decodeURI) or [decodeURIComponent](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/decodeURIComponent). So, if `s` is a `string`, the following will return `s`
+
+	decodeURI(encodeURI(s))
+	
+[More details on encoding](http://en.wikipedia.org/wiki/Percent-encoding)
 
 ## Details of a request
 
@@ -138,25 +162,22 @@ The following is some sample code for programmatically sending an HTTP request u
 
 ## Exercise
 
-Basic node application to do google search. 
-
-Todo: describe legal chars for a url, introduce escape() and unescape()
-
-	> node search.js terms ...
-	1. Title
+The goal if this exercise is to learn how to send HTTP requests programatically, by building a simple command line tool that performs Google searches and displays the results. Here is how the tool should work:
+	
+	> node search.js term1 term2 ...
+	1. title
 	   url
-	2. Title
+	2. title
 	   url
-	3. Title
+	3. title
 	   url
 
-As hints here are some pieces of a complete solution.
+To do this, the tool should take the terms from the command line (see: `process.argv`), encode them and produce an appropriate query string. Using that query string, a request should be sent to www.google.ca with the following format (assuming three terms: winnie the pooh):
 
-	// ...
-	function terms(argv) {
-		
-	}
+	http://www.google.ca/webhp?q=winnie+the+pooh
 
-Once you've done the above exercise, give this one a try ... link to lab exercise.
+For now, just focus on writing the code to send the request. Parsing the response is outside the scope of this quick exercise.
+
+Once you've done the above exercise, give this one a try [this exercise](../exercises/bench.html).
 
 
