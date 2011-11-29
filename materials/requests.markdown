@@ -176,8 +176,40 @@ To do this, the tool should take the terms from the command line (see: `process.
 
 	http://www.google.ca/webhp?q=winnie+the+pooh
 
-For now, just focus on writing the code to send the request. Parsing the response is outside the scope of this quick exercise.
+For now, just focus on writing the code to send the request. Parsing the response is outside the scope of this quick exercise. Here is a quick solution to this exercise, but I suggest that you try it on your own before looking at my code.
 
-Once you've done the above exercise, give this one a try [this exercise](../exercises/bench.html).
+	var http = require('http'),
+	    querystring = require('querystring')
+
+	// get terms from command line
+	var terms = process.argv.slice(2)
+
+	// here we're using the encodeURIComponent to escape characters that are
+	// not allowed in URLs, but see also node's querystring module
+	var escaped_terms = terms.map(encodeURIComponent)
+	var query = escaped_terms.join('+')
+
+	var options = {
+	    host: 'www.google.ca',
+	    port: 80,
+	    path: '/webhp?' + query,
+	    method: 'GET'
+	}
+
+	// setup the request
+	console.log('sending request: ' + options.host + options.path)
+	var request = http.request(options)
+
+	// listen for a response
+	request.on('response', function(response) {
+	    console.log('received response ' + response.statusCode)
+
+	    // just ignoring the request data here ...
+	})
+
+	// complete the request
+	request.end()
+	
+Once you've done the above exercise, give [this exercise](../exercises/bench.html) a try.
 
 
