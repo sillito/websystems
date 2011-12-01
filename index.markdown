@@ -9,34 +9,34 @@ layout: default
 
 A collection or material and exercises for learning how to build web based systems using [Node](http://nodejs.org/) and [jQuery](http://jquery.com/). A web based system, in my view, is one in which clients interact with a backend server using the HTTP protocol. Examples include Google's Gmail (client side portion is written in JavaScript and runs in a web browser), but also Twitter's [iPhone app](https://twitter.com/#!/download/iphone) (client side portion is written in Objective-C and runs on an iPhone), however this material focuses on clients that are developed using HTML, CSS and JavaScript.
 
+This material is based on fundamental concepts such as the HTTP protocol and so no high-level framework (that hides those details) is used. In addition to the topics listed below, several cross-cutting topics (such as performance and security) get some coverage.
+
 Note that the exercises build on each other to some extent, so it makes some sense to work through this material in the following order.
 
-1. JavaScript
+1. JavaScript and node: [material](materials/javascript.html), [exercise](exercises/functions.html) 
 * HTTP requests: [material](materials/requests.html), [exercise](exercises/bench.html)
 * HTTP responses
 * Web server basics
 * HTML, the web's presentation layer
+* SQL and persistence
 * HTML forms and POST HTTP requests
 * HTTP and state (session management)
 * CSS (Cascading Style Sheets)
 * DOM model and API
 * Client side programming with jQuery
 * Asynchronous HTTP requests (using jQuery)
+* Overview of other topics (Frameworks, REST, Document stores, etc)
 
 Here are some general references I find helpful:
 
 * [JavaScript language guide and reference](https://developer.mozilla.org/en/JavaScript) from Mozilla.
-* CSS standard
-* Node.js docs
+* CSS standard (surprisingly readable for a standards document)
+* Node docs
+* jQuery docs
+* [Douglas Crockford's JavaScript talk](http://yuiblog.com/crockford/)
 
-## Author
+### Download
 
-Jonathan Sillito
-
-## Download
-
-[GitHub project](https://github.com/sillito/websystems). You can download this project in either [zip](https://github.com/sillito/websystems/zipball/master) or [tar](https://github.com/sillito/websystems/tarball/master) formats.
-
-You can also clone the project with [Git](http://git-scm.com) by running:
+View the [GitHub project](https://github.com/sillito/websystems), download this project in either [zip](https://github.com/sillito/websystems/zipball/master) or [tar](https://github.com/sillito/websystems/tarball/master) formats, or clone the project with [Git](http://git-scm.com) by running:
 
 	$ git clone git://github.com/sillito/websystems
