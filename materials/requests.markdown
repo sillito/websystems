@@ -3,8 +3,6 @@ title: HTTP Requests
 layout: default
 ---
 
-# HTTP Requests
-
 HTTP (or Hypertext Transfer Protocol) is the foundation of data communication for the World Wide Web. It is standardized by the Internet Engineering Task Force and the World Wide Web Consortium. HTTP/1.1 is the version of HTTP in common use today.
 
 In response to a request from a client a server takes some action on behalf of the client and returns a response:

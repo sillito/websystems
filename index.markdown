@@ -1,11 +1,9 @@
 ---
-title: sillito/websystems @ GitHub
+title: Web Systems
 layout: default
 ---
 
 <a href="https://github.com/sillito/websystems" style="display:none"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
-
-# Web Systems
 
 A collection or material and exercises for learning how to build web based systems using [Node](http://nodejs.org/) and [jQuery](http://jquery.com/).
 
@@ -13,8 +11,8 @@ A web based system, in my view, is one in which clients interact with a backend 
 
 This material is based on fundamental concepts such as the HTTP protocol and so no high-level framework (that hides those details) is used. In addition to the topics listed below, several cross-cutting topics (such as performance and security) get some coverage. Note that the exercises build on each other to some extent, so it makes some sense to work through this material in the following order.
 
-1. JavaScript and node: [material](materials/javascript.html), [exercise](exercises/functions.html) 
-* HTTP requests: [material](materials/requests.html), [exercise](exercises/bench.html)
+1. [JavaScript and node materials](materials/javascript.html) and [exercise](exercises/functions.html) 
+* [HTTP requests materials](materials/requests.html) and [exercise](exercises/bench.html)
 * HTTP responses
 * Web server basics
 * HTML, the web's presentation layer

@@ -12,17 +12,13 @@
     #container {
       margin: 0 auto;
       width: 720px; }
-
-	h1, h2, h3 {
-		font-family:Futura, Helvetica, Areial, FreeSans, sans-serif;
-		font-stretch:condensed;}
 	
-    h1 { font-size: 3.8em; margin-bottom:0; }
+    h1 { font-size: 3em; margin-bottom:10px; }
     h2 { font-size: 1.5em; margin-bottom:0; }
 	h3 { font-size: 1.25em; margin-bottom:0; }
 	
-	a { color: #394;}
-/*	a:visited {color: #333;}*/
+	a { color: #3a4; text-decoration:none;}
+	a.navigation {font-size:0.8em;}
 	
     pre { 
 		background: #222; 
@@ -42,7 +38,15 @@
 </head>
 
 <body>
+	
 	<div id="container">
+		
+		<h1>{{ page.title }}</h1>
+		
+		{% if page.url != '/index.html' %}
+			<a href="../index.html" class="navigation">&larr; All Material</a>
+		{% endif %}
+		
 		{{content}}
 		
 		<div class="footer">

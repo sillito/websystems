@@ -3,8 +3,6 @@ title: JavaScript (and Node)
 layout: default
 ---
 
-# JavaScript (and Node)
-
 [JavaScript](https://developer.mozilla.org/en/JavaScript) is an object-based programming language often used for programs intended to run in web browsers. [Node](http://nodejs.org/) is a system designed for writing internet (server) applications. The goal is to make it easy (obviously a relative term) to write an application that scales to large numbers of clients. Node programs are written JavaScript but executed on a server (in general) rather than a web browser.
 
 **Tip:** While watching these videos and reading through the following notes, have Node running so you can try things out.

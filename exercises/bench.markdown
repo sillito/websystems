@@ -1,9 +1,7 @@
 ---
-title: Benchmarking Tool
+title: Create Benchmarking Tool
 layout: default
 ---
-
-# Create Bench Marking Tool
 
 For this exercise you will create a tool that can be used to benchmark a web server by sending it multiple requests and measuring the response time for each request. The command takes three arguments: a host name, a path and a number of requests (`N`) to send
 	
