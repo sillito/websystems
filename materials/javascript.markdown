@@ -7,15 +7,19 @@ layout: default
 
 [JavaScript](https://developer.mozilla.org/en/JavaScript) is an object-based programming language often used for programs intended to run in web browsers. [Node](http://nodejs.org/) is a system designed for writing internet (server) applications. The goal is to make it easy (obviously a relative term) to write an application that scales to large numbers of clients. Node programs are written JavaScript but executed on a server (in general) rather than a web browser.
 
-The following video is a simple and brief introduction to JavaScript and Node. For more detailed coverage of JavaScript (including upcoming changes to the language), I suggest watching videos of [Douglas Crockford's JavaScript talk](http://yuiblog.com/crockford/).
+**Tip:** While watching these videos and reading through the following notes, have Node running so you can try things out.
 
+The first video is a simple and 18 minute introduction to JavaScript. For more detailed coverage of JavaScript (including upcoming changes to the language), I suggest watching videos of [Douglas Crockford's JavaScript talk](http://yuiblog.com/crockford/) and reading mozilla's [JavaScript Guide](https://developer.mozilla.org/en/JavaScript/Guide).
 
+<iframe src="http://player.vimeo.com/video/32997960?title=0&amp;byline=0&amp;portrait=0" width="720" height="540" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 
-**Tip:** While watching the above video and reading through the following notes, have Node running so you can try things out.
+This 4 minute video demonstrates how to write a simple HTTP server in Node.
+
+<iframe src="http://player.vimeo.com/video/33002243?title=0&amp;byline=0&amp;portrait=0" width="720" height="540" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 
 ## Values, variables and literals
 
-Variables (or names for values) are declared using the `var` keyword. Constants (read-only) with the `const` keyword. 
+Variables (or names for values) are declared using the `var` keyword. Constants are declared with the `const` keyword. 
 
 	> var x = 13; // declare and assign
 	> x = "this string"; // reassignment, note: dynamically typed
@@ -53,6 +57,8 @@ Values or literals in JavaScript include:
 
 Two more fundamental elements, objects (a) and functions, we'll talk about below. We'll also have more to say about Arrays below.
 
+**Next step:** Familiarize yourself with the [basic types in the language](https://developer.mozilla.org/en/JavaScript/Reference).
+
 ## Expressions and statements
 
 JavaScript has lots of the operators you'd expect for assignment, comparison, arithmetic, bitwise operations, logical operations, deleting properties, creating objects. By the way, in most situations the trailing `;` at the end of a statement is (unfortunately?) unnecessary and so I've gotten into the (bad?) habit of leaving them off.
@@ -71,6 +77,8 @@ Conditional statements: if...else, switch
 	> if (3=="3.0") {console.log("it's true")}
 	
 Loop statements: while, for, do...while, label, break, continue
+
+**Next steps:** Read up on [expressions and operators](https://developer.mozilla.org/en/JavaScript/Guide/Expressions_and_Operators), and [statements](https://developer.mozilla.org/en/JavaScript/Guide/Statements) in JavaScript.
 
 ## Functions
 
@@ -103,6 +111,8 @@ Now we can write code like the following:
 	> each(a, console.log);
 
 Note: JavaScript doesn't care much about whether the number of arguments passed is the same as the number expected. Missing arguments are `undefined`. Extra arguments (actually, all arguments) can be accessed using the `arguments` object (which works like an array).
+
+**Next step:** Read more about [functions](https://developer.mozilla.org/en/JavaScript/Guide/Functions) in JavaScript.
 
 ## Objects
 
@@ -140,12 +150,7 @@ So these entities are functions! Constructor functions to be precise. In the fol
 	    this.model = model;
 	    this.year defineyeacreate an age property here in the constructor function, but that would create a different age method for each car I created. 
 
-	Car.prototype = { // properties shared by all "cars"
-
-	    blueBookValue : function() {
-	        // ...
-	    },
-
+	Car.prototype.age = function() {
 	    age : function() {
 	        var current_year = (new Date).getFullYear();
 	        return current_year - this.year;
@@ -173,10 +178,7 @@ Now when a method `m` is called on a receiver object `o` the following lookup ha
 
 This process continues until `m` is found or until an object's `__proto__` is `null`. Regardless of where the method is found, when it is called, `this` will be a reference to the original receiving object. Now try tracing the call `c1.age()` in the above code.
 
-## Hello world Node program
-
-TODO: Include video (or reference the above)
-
+**Next step:** Read more about [working with objects in JavaScript](https://developer.mozilla.org/en/JavaScript/Guide/Working_with_Objects).
 
 ## Exercise
 
@@ -199,7 +201,7 @@ Once we have implemented the `times` function, the next step is create a `times`
 		// ...
 	})
 	
-Below is my solution to this exercise, but you may want to try it yourself first. Once you have implemented the `times` function and the `times` method, give [this one](../exercises/functions.html) a try.
+Below is my solution to this exercise, but you may want to try it yourself first. Once you have implemented the `times` function and the `times` method, give [this exercise](../exercises/functions.html) a try.
 
 	// times function
 	function times(n, f) {
