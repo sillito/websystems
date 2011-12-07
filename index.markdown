@@ -11,10 +11,10 @@ A web based system, in my view, is one in which clients interact with a backend 
 
 This material is based on fundamental concepts such as the HTTP protocol and so no high-level framework (that hides those details) is used. In addition to the topics listed below, several cross-cutting topics (such as performance and security) get some coverage. Note that the exercises build on each other to some extent, so it makes some sense to work through this material in the following order.
 
-1. [JavaScript and node materials](materials/javascript.html) and [exercise](exercises/functions.html) 
+1. [JavaScript and node materials](materials/javascript.html), [node hello world program](materials/node-hello.html) and [exercise](exercises/functions.html) 
 * [HTTP requests materials](materials/requests.html) and [exercise](exercises/bench.html)
 * HTTP responses
-* Web server basics
+* Web application server basics
 * HTML, the web's presentation layer
 * SQL and persistence
 * HTML forms and POST HTTP requests

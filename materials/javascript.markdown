@@ -5,15 +5,11 @@ layout: default
 
 [JavaScript](https://developer.mozilla.org/en/JavaScript) is an object-based programming language often used for programs intended to run in web browsers. [Node](http://nodejs.org/) is a system designed for writing internet (server) applications. The goal is to make it easy (obviously a relative term) to write an application that scales to large numbers of clients. Node programs are written JavaScript but executed on a server (in general) rather than a web browser.
 
-**Tip:** While watching these videos and reading through the following notes, have Node running so you can try things out.
+**Tip:** While watching this video and reading through the following notes, have Node running so you can try things out.
 
-The first video is a simple and 18 minute introduction to JavaScript. For more detailed coverage of JavaScript (including upcoming changes to the language), I suggest watching videos of [Douglas Crockford's JavaScript talk](http://yuiblog.com/crockford/) and reading mozilla's [JavaScript Guide](https://developer.mozilla.org/en/JavaScript/Guide).
+The video is a simple and 18 minute introduction to JavaScript. For more detailed coverage of JavaScript (including upcoming changes to the language), I suggest watching videos of [Douglas Crockford's JavaScript talk](http://yuiblog.com/crockford/) and reading mozilla's [JavaScript Guide](https://developer.mozilla.org/en/JavaScript/Guide).
 
 <iframe src="http://player.vimeo.com/video/32997960?title=0&amp;byline=0&amp;portrait=0" width="720" height="540" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-
-This 4 minute video demonstrates how to write a simple HTTP server in Node.
-
-<iframe src="http://player.vimeo.com/video/33002243?title=0&amp;byline=0&amp;portrait=0" width="720" height="540" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 
 ## Values, variables and literals
 
