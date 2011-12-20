@@ -63,8 +63,8 @@ JavaScript has lots of the operators you'd expect for assignment, comparison, ar
 	> 3 === "3.0" // no type conversion, must be same type
 	> var y = (x > 5) ? "big" : "small"; // conditional operator
 	
-	> var a = [1,2,3];
-	> 2 in a; // gtrue if property is in specified object or array
+	> var a = {'name':'Jonathan', 'height':6};
+	> 'name' in a; // true if property is in specified object
 	
 Conditional statements: if...else, switch
 
