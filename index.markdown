@@ -1,6 +1,7 @@
 ---
 title: Web Systems
 layout: default
+root: ./
 ---
 
 <a href="https://github.com/sillito/websystems" style="display:none"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
@@ -13,7 +14,7 @@ This material is based on fundamental concepts such as the HTTP protocol and so 
 
 1. [JavaScript and node materials](materials/javascript.html), [node hello world program](materials/node-hello.html) and [exercise](exercises/functions.html) 
 * [HTTP requests materials](materials/requests.html) and [exercise](exercises/bench.html)
-* HTTP responses
+* [HTTP responses materials](materials/responses.html)
 * Web application server basics
 * HTML, the web's presentation layer
 * SQL and persistence

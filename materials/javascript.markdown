@@ -1,6 +1,7 @@
 ---
 title: JavaScript (and Node)
 layout: default
+root: ../
 ---
 
 [JavaScript](https://developer.mozilla.org/en/JavaScript) is an object-based programming language often used for programs intended to run in web browsers. [Node](http://nodejs.org/) is a system designed for writing internet (server) applications. The goal is to make it easy (obviously a relative term) to write an application that scales to large numbers of clients. Node programs are written JavaScript but executed on a server (in general) rather than a web browser.
@@ -92,13 +93,15 @@ Now let's look at a more complicated example. The normal way to iterate through 
 	> var a = [1,2,3,4,5];
 	> for (var i=0; i<a.length; i++) {console.log(a[i])}
 
-But this get's tedious, so let's create a function to make this easier. Notice that the second argument is expected to be a function. (Actually, JavaScript Arrays already have a very useful `forEach` method [documented here](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/forEach), but just as an illustration ..).
+But this get's tedious, so let's create a function to make this easier. Notice that the second argument is expected to be a function. (Actually, JavaScript Arrays already have a very useful `forEach` method [documented here](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/forEach), but just as an illustration ...).
 
-	function each(collection, func) {
-	    for (var i = 0; i < collection.length; i++) {
-	        func(collection[i]); 
-	    }
-	}
+{% highlight javascript %}
+function each(collection, func) {
+    for (var i = 0; i < collection.length; i++) {
+        func(collection[i]); 
+    }
+}
+{% endhighlight %}
 	
 Now we can write code like the following:
 

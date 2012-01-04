@@ -1,6 +1,7 @@
 ---
 title: HTTP Requests
 layout: default
+root: ../
 ---
 
 HTTP (or Hypertext Transfer Protocol) is the foundation of data communication for the World Wide Web. It is standardized by the Internet Engineering Task Force and the World Wide Web Consortium. HTTP/1.1 is the version of HTTP in common use today.
@@ -72,19 +73,19 @@ Now let's look at the lower level details of a request. To send a request, a use
 
 		GET /standards/about.html HTTP/1.1
 
-  In the above example the method is `GET`. Other possible methods include `HEAD`, `POST`, `PUT`, `DELETE`, `TRACE`, `OPTIONS`, `CONNECT` and `PATCH`. In this course we'll focus primarily on `GET` and `POST` requests. The method describes the action that is requested. As the names imply some methods are intended to be side-effect free while others may modify a resource on the server. A GET request is simply asking for a resource
+	In the above example the method is `GET`. Other possible methods include `HEAD`, `POST`, `PUT`, `DELETE`, `TRACE`, `OPTIONS`, `CONNECT` and `PATCH`. In this course we'll focus primarily on `GET` and `POST` requests. The method describes the action that is requested. As the names imply some methods are intended to be side-effect free while others may modify a resource on the server. A GET request is simply asking for a resource
 
 2. Some number of headers which take the form of `name: value`, each on their own line, usually. In general headers are optional, but some servers require that the host header be provided.
 
 		host: www.w3.org
 	
-  Other headers in a request might include identify the type of user agent sending the request (`user-agent`) or provide authentication credentials (`authorization`). The `cookie` header is very useful as a way to maintain session information. The list of headers is followed by an empty line.
+	Other headers in a request might include identify the type of user agent sending the request (`user-agent`) or provide authentication credentials (`authorization`). The `cookie` header is very useful as a way to maintain session information. The list of headers is followed by an empty line.
 
 3. An optional message body containing data being sent from the user-agent to the server. For example, if the user has just submitted an login form, the body could have two values (username and password) and look like this:
 
 		username=sillito&password=abcdefg
 
-  We'll say more about message bodies when we talk about POST requests requests later in the course.
+	We'll say more about message bodies when we talk about POST requests requests later in the course.
 
 Here are two (almost complete) actual requests sent by a browser. See if you can figure out what the purpose of each of the headers is. First, a `GET` request:
 
@@ -119,6 +120,7 @@ Second, a `POST` request:
 
 The following is some sample code for programmatically sending an HTTP request using node. 
 
+	{% highlight javascript %}
 	var http = require('http')
 	
 	var options = {
@@ -157,6 +159,7 @@ The following is some sample code for programmatically sending an HTTP request u
 	
 	// complete the request
 	request.end()
+	{% endhighlight %}
 
 ## Exercise
 

@@ -1,6 +1,7 @@
 ---
 title: Node Hello World Program
 layout: default
+root: ../
 ---
 
 This 4 minute video demonstrates how to write a simple HTTP server in Node.
