@@ -75,3 +75,17 @@ Here is a sample HTTP Response from `www.google.com` indicating that the request
 
 ## Exercise
 
+The goal of this exercise is to get practice creating HTTP responses in Node, by creating a simple chat server. To make things simple, the server will store chat messages in memory and will not perform any security checks and all responses will have `Content-Type:` `text/plain`. Here is an example set of interactions with
+
+	request: chat/new       // start a chat
+	response body: 1234          // id for chat
+	
+	request: chat/1234/message/new
+	         
+	         author=Jim&message=Hello everyone.
+	response body: 8765          // id for message
+	
+	request: chat/12345/messages?since=8765
+	response body: ...
+	
+More details will follow, shortly.

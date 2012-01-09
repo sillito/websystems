@@ -163,7 +163,7 @@ The following is some sample code for programmatically sending an HTTP request u
 
 ## Exercise
 
-The goal if this exercise is to learn how to send HTTP requests programatically, by building a simple command line tool that performs Google searches and displays the results. Here is how the tool should work:
+The goal of this exercise is to learn how to send HTTP requests programatically, by building a simple command line tool that performs Google searches and displays the results. Here is how the tool should work:
 	
 	> node search.js term1 term2 ...
 	1. title
