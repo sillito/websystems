@@ -75,5 +75,3 @@ Here is a sample HTTP Response from `www.google.com` indicating that the request
 
 ## Exercise
 
-
-

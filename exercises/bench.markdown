@@ -7,7 +7,7 @@ For this exercise you will create a tool that can be used to benchmark a web ser
 	
 	> node bench.js host path N
 	
-Given those arguments, the tool sends `N` requests for the resource identified by the given host and path. These requests are sent nearly concurrently (i.e., send each without waiting for the previous request to complete). The time taken to complete the response for each request is tracked and when all requests are complete the following data is output.
+Given those arguments, the tool sends `N` requests for the resource identified by the given host and path. These requests are to be sent nearly concurrently (i.e., send each without waiting for the previous request to complete). The time taken to complete the response for each request is tracked and when all requests are complete the following data is output.
 
 	concurrrent requests:  <number>
 	total time:            <time with units>
