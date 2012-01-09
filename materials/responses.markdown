@@ -75,7 +75,7 @@ Here is a sample HTTP Response from `www.google.com` indicating that the request
 
 ## Exercise
 
-The goal of this exercise is to get practice creating HTTP responses in Node, by creating a simple chat server. To make things simple, the server will store chat messages in memory and will not perform any security checks and all responses will have `Content-Type:` `text/plain`. Here is an example set of interactions with
+The goal of this exercise is to get practice creating HTTP responses in Node, by creating a simple chat server. To make things simple, the server will store chat messages in memory and will not perform any security checks and all responses will have `Content-Type:` `text/plain`. Here is an example series of requests and responses:
 
 	request: chat/new       // start a chat
 	response body: 1234          // id for chat
