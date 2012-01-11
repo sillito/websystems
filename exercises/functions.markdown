@@ -44,8 +44,8 @@ _Parameters:_
 
 _Example:_
 
-	> substitute('Hello {{name}}. The time is {{time}}', {name:'Jim'})
-	"Hello Jim. The time is {{time}}"	
+	> substitute('Hello {{"{{name"}}}}. The time is {{"{{time"}}}}', {name:'Jim'})
+	"Hello Jim. The time is {{"{{time"}}}}"	
 
 **`open_and_substitute`**`(template_filename, replacements, cb)`
 
@@ -75,7 +75,7 @@ Add a `time_between_in_words` method and a `time_ago_in_words` method to all `Da
 
 Add a `substitute` method to all [`String`](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String) objects.
 
-	'Hello {{name}}. The time is {{time}}'.substitute({name:'Jim'});
+	'Hello {{"{{name"}}}}. The time is {{"{{time"}}}}'.substitute({name:'Jim'});
 
 ## Test the Above
 
