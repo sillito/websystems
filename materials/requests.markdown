@@ -38,8 +38,8 @@ In the above example, nor port is specified so port 80 is assumed, so the follow
 
 [http://en.wikipedia.org:80/wiki/University_of_calgary#Academics](http://en.wikipedia.org:80/wiki/University_of_calgary#Academics)
 
-[More details on URL syntax, etc](http://en.wikipedia.org/wiki/Uniform_Resource_Locator)  
-[See also URIs](http://en.wikipedia.org/wiki/Uniform_resource_identifier)
+**Next steps:** Read more [details on URL syntax, etc](http://en.wikipedia.org/wiki/Uniform_Resource_Locator) and 
+[see also URIs](http://en.wikipedia.org/wiki/Uniform_resource_identifier)
 
 ### Encoding and Decoding URLs
 
@@ -62,8 +62,8 @@ For example, if you want to send data in the query string of a URL with a space 
 The reverse process is called decoding and can be performed with [decodeURI](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/decodeURI) or [decodeURIComponent](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/decodeURIComponent). So, if `s` is a `string`, the following will return `s`
 
 	decodeURI(encodeURI(s))
-	
-[More details on encoding](http://en.wikipedia.org/wiki/Percent-encoding)
+
+**Next steps:** Look at [more details on encoding](http://en.wikipedia.org/wiki/Percent-encoding)
 
 ## Details of a request
 
@@ -113,8 +113,7 @@ Second, a `POST` request:
 
 	login=jonathan&password=cpsc301&submit=Login
 
-[More details on HTTP requests](http://en.wikipedia.org/wiki/Http_request)  
-[Complete list of HTTP headers](http://en.wikipedia.org/wiki/List_of_HTTP_headers)
+**Next steps:** [More details on HTTP requests](http://en.wikipedia.org/wiki/Http_request), and [complete list of HTTP headers](http://en.wikipedia.org/wiki/List_of_HTTP_headers)
 
 ## Sending requests in Node
 
@@ -179,6 +178,7 @@ To do this, the tool should take the terms from the command line (see: `process.
 
 For now, just focus on writing the code to send the request. Parsing the response is outside the scope of this quick exercise. Here is a quick solution to this exercise, but I suggest that you try it on your own before looking at my code.
 
+	{% highlight javascript %}
 	var http = require('http'),
 	    querystring = require('querystring')
 
@@ -210,6 +210,7 @@ For now, just focus on writing the code to send the request. Parsing the respons
 
 	// complete the request
 	request.end()
+	{% endhighlight %}
 	
 Once you've done the above exercise, give [this exercise](../exercises/bench.html) a try.
 

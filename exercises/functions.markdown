@@ -7,7 +7,7 @@ Implement the following four JavaScript functions.
 
 **`time_between_in_words`**`(from_date, to_date)`
 
-Returns a [`String`](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String) describing the approximate amount of time that has elapsed between the `from_date` to the `to_date`. This description is human readable (e.g., '1 minute', '2 minutes', or '2 weeks').
+Returns a [`String`](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String) describing the approximate amount of time that has elapsed between the `from_date` to the `to_date`. This description should be in a human readable form (e.g., '1 minute', '3 hours', '2 days', '1 week', '6 months' or '25 years').
 
 _Parameters:_
 
@@ -57,10 +57,14 @@ _Parameters:_
 
 * `replacements` - an [`Object`](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object) with values to substitute into the template
 
+* `cb` - a call back function that is called with the result of the substitution.
+
 _Example:_
 
-	> open_and_substitute("path/to/template.txt", {name:'Jim'})
-	"Hello Jim. The time is {{time}}"
+	> open_and_substitute("path/to/template.txt", {name:'Jim'}, function(result) {
+		// depending on template.txt, the result might be: 
+		// 'Hello Jim. The time is {{"{{time"}}}}'
+	})
 	
 	
 ## Implement JavaScript methods
@@ -79,6 +83,6 @@ Add a `substitute` method to all [`String`](https://developer.mozilla.org/en/Jav
 
 ## Test the Above
 
-Create a node script that tests the four functions and three methods you created above. Use the [`Assert` module](http://nodejs.org/docs/v0.4.12/api/assert.html) to help you write your tests. 
+Create a node script that tests the four functions and three methods you created above. Use the [`Assert` module](http://nodejs.org/docs/v0.4.12/api/assert.html) to help you write your tests. To adequately test your functions consider several different cases, including some boundary cases.
 
 	> node tests.js
