@@ -5,6 +5,8 @@ layout: default
 
 Implement the following four JavaScript functions.
 
+---
+
 **`time_between_in_words`**`(from_date, to_date)`
 
 Returns a [`String`](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String) describing the approximate amount of time that has elapsed between the `from_date` to the `to_date`. This description should be in a human readable form (e.g., '1 minute', '3 hours', '2 days', '1 week', '6 months' or '25 years').
@@ -18,7 +20,9 @@ _Example:_
 
 	> time_between_in_words(d1,d2)
 	"2 hours"
-	
+
+---
+
 **`time_ago_in_words`**`(date)`
 
 Like `time_between_in_words`, except that `to_date` is set to now.
@@ -31,6 +35,8 @@ _Example:_
 
 	> time_ago_in_words(new Date())
 	"a moment"
+
+---
 
 **`substitute`**`(template, replacements)`
 
@@ -46,6 +52,8 @@ _Example:_
 
 	> substitute('Hello {{"{{name"}}}}. The time is {{"{{time"}}}}', {name:'Jim'})
 	"Hello Jim. The time is {{"{{time"}}}}"	
+
+---
 
 **`open_and_substitute`**`(template_filename, replacements, cb)`
 
