@@ -160,6 +160,73 @@ The following is some sample code for programmatically sending an HTTP request u
 	request.end()
 	{% endhighlight %}
 
+## REST
+
+When implementing a web application, a key set of design decisions revolve around the design of the request _methods_ and _URLs_: what kind of requests are user-agents expected to send and how should the server respond in each case? It I type the following URL into my web browser:
+
+	http://google.com/this/is/a/random/path/that/i/made/up
+	
+How would you expect google's server to respond? I tried it and I got this error message:
+
+	404. That’s an error.
+
+	The requested URL /this/is/a/random/path/that/i/made/up was not found on 
+	this server. That’s all we know.
+
+This what is called a **404** (or "Not Found") error. It means that the server doesn't know what to do with my request. Specifically, it does not know what to do with that URL, since I made it up and it is not something that the engineers at Google have programmed their system to handle.
+
+Historically, web servers simply provided access to a set of files (resources) that resided on a server. For example, we can think of the nytimes.com server as providing access to documents that comprise news articles. So an HTTP request with the following URL, conceptually says: _give me the HTML document at this path on the nytimes server_:
+
+	URL:   http://www.nytimes.com/2012/01/20/sports/tennis/20iht-tennis20.html
+	PATH:  /2012/01/20/sports/tennis/20iht-tennis20.html
+
+The reality has become more complicated than that. Many of the online services we use are not so much web servers providing access to static resources, as they are applications that generate content (based on information stored in a database), allow it to be manipulated and viewed in different ways. For example, if I am creating a web application that allows users to manage tasks, than my system needs to support actions such as:
+
+* Add tasks
+* Delete task
+* Modify task
+* Mark task as complete
+* Show incomplete tasks
+* etc
+
+In designing this application, I need to decide what HTTP requests will be associated with each of these actions. In other words, when the user wants to create a task: _what request should the user agent send to the server?_ Here is a first try at a URL scheme:
+
+	POST /add_task     # with task description in body of of the request
+	POST /delete_task  # with task ID in body of the request
+	POST /modify_task  # with task id and description in body of of the request
+	GET  /show_incomplete_tasks
+	etc
+
+When the server side of the application receives a request, it looks at the method and the path to determine what action to take and once it takes that action it returns a suitable HTTP response. As the number of actions in my application grows, a more structured approach to designing a URL scheme becomes helpful. Similarly, if my URL scheme becomes an API for different systems to use, a more logical scheme may help the developers of those systems. 
+
+In 2000 [Roy Fielding](http://en.wikipedia.org/wiki/Roy_Fielding) defined an architecture to help with just such a problem. He called this architecture [representational state transfer (REST)](http://en.wikipedia.org/wiki/Representational_state_transfer). At its heart, REST is about how clients and servers communicate and here we'll discuss it only in the context of HTTP requests and responses and focus on the implications for a URL structure. In this approach, a path refers to a resource and the method indicates the type of operation that should be performed on that resource.
+
+In our simple task application, there are two kinds of resources: (1) our task list, and (2) individual tasks. 
+
+	Method Path     Action/Response by server
+	-------------------------------------------------------
+	GET    /tasks    retreive a list of all tasks (for user)
+	PUT    /tasks    replace list of tasks with new list
+	POST   /tasks    create a new tasks, add to list
+	DELETE /tasks    delete all tasks (for user)
+	-------------------------------------------------------
+	GET    /tasks/3  retrieve a representation of task 3
+	PUT    /tasks/3  replace task 3
+	POST   /tasks/3  create a sub task maybe???
+	DELETE /tasks/3  delete task 3
+
+Notice that different methods result in different actions taken, even in cases where the path is the same. Again, the idea is that the path defines what resource we are operating on and the method says what operation to perform on that resource.
+
+The [Twitter REST API](https://dev.twitter.com/docs/api) is a real-world example of an (arguably) RESTful URL schema. Here are three example request types from the Twitter documentation:
+
+* `POST statuses/update` updates user's status (i.e, tweet)
+* `GET statuses/show/:id` returns a single status
+* `POST statuses/retweet/:id` retweets a given tweet
+
+To test this out you can use a tool such as `curl` to construct HTTP requests and send them to Twitter's servers. The `.json` at the end of the path specifies the data type that should be returned ([JSON](http://en.wikipedia.org/wiki/JSON) in this case). 
+
+	curl https://api.twitter.com/1/statuses/show/160051887821946881.json
+
 ## Exercise
 
 The goal of this exercise is to learn how to send HTTP requests programatically, by building a simple command line tool that performs Google searches and displays the results. Here is how the tool should work:
