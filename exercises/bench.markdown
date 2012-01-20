@@ -9,19 +9,21 @@ For this exercise you will create a tool that can be used to benchmark a web ser
 	
 Given those arguments, the tool sends `N` requests for the resource identified by the given host and path. These requests are to be sent nearly concurrently (i.e., send each without waiting for the previous request to complete). The time taken to complete the response for each request is tracked and when all requests are complete the following data is output.
 
-	concurrrent requests:  <number>
-	total time:            <time with units>
-	mean time/request:     <time with units>
+	successful requests:    <number> out of <total requests sent>
+	total time:             <time> ms
+	throughput:             <number> requests/s
+	average response time:  <time> ms
 	
-For example, if you wanted your tool to send (and benchmark) 100 requests against wikipedia you could run:
+In reporting the results, round each computed number to some reasonable level of precision. For example, if you wanted your tool to send (and benchmark) 100 requests against wikipedia you could run:
 
 	> node bench.js en.wikipedia.org /wiki/University_of_calgary 100
 	
 In this case the output (depending on how wikipedia is responding at the time the tool is run) might be:
 
-	successful requests: 20
-	total time:          50221ms
-	mean time/request:   2511.05ms
+	successful requests:   100 out of 100
+	total time:            50.02 s
+	throughput:            1.99 requests/s
+	average response time: 608.05 ms
 
 ## Hints
 
