@@ -313,7 +313,7 @@ Here is a sketch of a nearly complete solution. I suggest you try this by yourse
 	server.listen(8123)
 	{% endhighlight %}
 
-To "test" my server I used a command line utility called [curl]() to act as the client. The following are the `curl` commands and the body of the responses sent by my simple chat server. 
+To "test" my server I used a command line utility called [curl](http://curl.haxx.se/docs/) to act as the client. The following are the `curl` commands and the body of the responses sent by my simple chat server. 
 
 	> curl http://localhost:8123/chats/new
 	0
