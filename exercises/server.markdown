@@ -23,7 +23,7 @@ In either case the HTTP response should have an appropriate Content-Type set. A 
 * text/html
 * text/plain
 * image/png
-* image/jpef
+* image/jpeg
 
 Once you have completed your server program, use [your benchmarking tool](bench.html) to test the performance of your server. One of the variables you should consider in your performance testing is file size. To facilitate this testing, you should create or find a few files such as:
 

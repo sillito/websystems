@@ -14,7 +14,7 @@ At it's simplest a (web) server can simply be providing access to file resources
 
 	GET /patients/18
 
-will be handled by (or "routed to")the `show` method in the `PatientsController` class. The show method might read patient information from the database (for patient with id 17), generate an HTML representation of that patient information and then return the HTML as the body of a response. Similarly, a request such as:
+will be handled by (or "routed to")the `show` method in the `PatientsController` class. The show method might read patient information from the database (for patient with id 18), generate an HTML representation of that patient information and then return the HTML as the body of a response. Similarly, a request such as:
 
 	POST /patients
 	
@@ -31,7 +31,7 @@ A response has three parts:
 	* `200 OK` (all 2XX indicate success)
 	* `302 Found` (all 3XX codes tell are redirects)
 	* `404 Not Found` (all 4XX codes are "client errors")
-	* `500 Internal Server Error` (all 4XX codes are "server errors")
+	* `500 Internal Server Error` (all 5XX codes are "server errors")
 
 	Here is an example response line for a "redirect" response.
 
