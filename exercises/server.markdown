@@ -1,6 +1,7 @@
 ---
 title: Serving Static Assets
 layout: default
+root: ../
 ---
 
 Create a simple node server that serves _static assets_. A static asset is a file that exists on the file system of the server. 
@@ -35,6 +36,23 @@ Once you have completed your server program, use [your benchmarking tool](bench.
 
 * A naive implementation of the server for this assignment will likely have a security vulnerability that gives clients access to files that are not under the `public/` directory. To trigger this vulnerability, clients need only send requests with a path that includes one or more `../` elements in the path. For example, a request for `../image.png` would be translated as `public/../image.png`, which is a file not under the public directory.	
 
-* To help you get started with this assignment here are a few code examples of demonstrating IO in Node.
+* To help you get started with this assignment below is a code example demonstrating IO in Node, but not handling any errors. In particular the code is streaming the file contents (in chunks as they are read) to the response. You may also want to look at the `path` module in node for several helpful functions, such as `path.exists` and `path.join`.
 
-		TODO
+	{% highlight javascript %}
+	var fs = require('fs')
+
+	response.writeHead(200, {'Content-Type':'image/jpg'})            
+   
+    var rs = fs.createReadStream(filename)
+
+	// each time some data is read, write it to the response
+    rs.on('data', function(chunk) {
+        response.write(chunk)
+    })
+	
+	// when we have read all the data, end the response
+    rs.on('end', function() {
+        response.end()
+    })
+	{% endhighlight %}
+

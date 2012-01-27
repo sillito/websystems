@@ -1,9 +1,9 @@
 var http = require('http')
 
 var options = {
-    host: 'www.w3.org',
-    port: 80,
-    path: '/standards/about.html',
+    host: '127.0.0.1',
+    port: 8123,
+    path: 'large.jpg',
     method: 'GET'
 }
 
@@ -19,7 +19,7 @@ request.on('response', function(response) {
     // set up an event listener to be called when each
     // chunk of data arrives
     response.on('data', function(chunk) {
-       console.log(chunk)
+       console.log('\tgot chunk')
     })
     
     // set up an event listener to be called when response
