@@ -108,7 +108,137 @@ First, use the [benchmarking tool you wrote previously](../exercises/bench.html)
 
 Next, let's see if we can improve the performance by adding threads. To do this, modify, the above code so that a new thread is spawned to handle each request. The `Thread.sleep(200)` we are using in the above code to simulate IO will only pause the one thread and so the performance should improve.
 
+Below is my modified `Server` class (renamed to `ThreadedServer`). You may want to try your own version of this before looking at my code.
+
+	{% highlight java %}
+	
+	//
+	// trivial HTTP server (warning doesn't handle/check various error conditions,
+	// doesn't catch and recover from exceptions and doesn't scale well)
+	//
+	public class ThreadedServer {    
+	    //
+	    // create server socket and listen for requests
+	    //
+	    public static void main(String[] args) throws IOException, InterruptedException {
+	        // this is the max size for the queue holding incoming requests for a
+	        // connection to this server
+	        int backlog = 10;
+
+	        // create a server listening on port 8124
+	        ServerSocket serverSocket = new ServerSocket(8124, backlog);
+
+	        // a simple loop that repeatedly accepts connection requests
+	        while(true) {
+	            // block while we wait to accept a connection request, then start
+	            // thread to handle the request ...
+	            new RequestHandler(serverSocket.accept()).start();
+	        }
+	    }
+	}
+	{% endhighlight %}
+
+Here is the supporting thread class that actually handles requests:
+
+	{% highlight java %}
+
+	class RequestHandler extends Thread {
+	    // socket to read a request from and write the response to
+	    Socket socket;
+
+	    public RequestHandler(Socket socket) {
+	        super("Request Handler");
+	        this.socket = socket;
+	    }
+
+	    public void run() {
+	        try {
+	            // parse lines sent by the client that are expected to follow 
+	            // the HTTP sepc
+	            HTTPRequest request = HTTPRequest.parse(socket.getInputStream());
+	            // System.out.println("received request ...");
+	            // System.out.println(request);
+
+	            // an actual server would take a different action depending on
+	            // the details of the request (e.g., reading some information 
+	            // from a database). here we just sleep ...
+	            Thread.sleep(200);
+
+	            // write a simple plain text response to the client
+	            String message = 
+	                "HTTP/1.1 200 OK\nContent-Type: text/plain; charset=utf-8\n\n" + 
+	                "Hello and goodbye from the server\n";
+	            OutputStream output = socket.getOutputStream();
+	            output.write(message.getBytes());
+
+	            // close the output stream and socket (may not get closed, if there
+	            // is an exception!!!)
+	            output.close();
+	            socket.close();
+
+	        // we're just catching these exceptions to keep the compiler happy, but
+	        // realistically, we should be serving (for example) of 500 response in
+	        // some error cases, ...
+	        } catch (IOException ex) {
+	            System.err.println("Error handling request " + ex);
+	        } catch (InterruptedException ex) {
+	            System.err.println("Error handling request " + ex);
+	        }
+	    }
+	}
+	{% endhighlight %}
+
 Compare the performance of the two servers (again using your benchmarking tool and `ab`). Presumably you will find that the threaded server performs much better, but are there any limitations to this approach?
+
+### Profiling with no concurrent requests
+
+Here is a subset of the `ab` output for the _non_ threaded server:
+
+	> ab -n 100 -c 1 http://127.0.0.1:8123/
+	Concurrency Level:      1
+	Time taken for tests:   20.136 seconds
+	Complete requests:      100
+	Requests per second:    4.97 [#/sec] (mean)
+	Time per request:       201.356 [ms] (mean)
+	Time per request:       201.356 [ms] (mean, across all concurrent requests)
+	Transfer rate:          0.44 [Kbytes/sec] received
+
+Here is a subset the `ab` output for the _threaded_ server:
+
+	> ab -n 100 -c 1 http://127.0.0.1:8124/
+	Concurrency Level:      1
+	Time taken for tests:   20.170 seconds
+	Complete requests:      100
+	Requests per second:    4.96 [#/sec] (mean)
+	Time per request:       201.700 [ms] (mean)
+	Time per request:       201.700 [ms] (mean, across all concurrent requests)
+	Transfer rate:          0.44 [Kbytes/sec] received
+
+As demonstrated by the above `ab` output, there is no significant performance difference between the threaded and non threaded interface, when there is no concurrency. 
+
+### Profiling with 10 concurrent requests
+
+In contrast, when there are concurrent requests, the threading makes a very significant difference in the performance. Here is a subset of the `ab` output for the _non_ threaded server:
+
+	> ab -n 100 -c 10 http://127.0.0.1:8123/
+	Concurrency Level:      10
+	Time taken for tests:   20.133 seconds
+	Complete requests:      100
+	Requests per second:    4.97 [#/sec] (mean)
+	Time per request:       2013.329 [ms] (mean)
+	Time per request:       201.333 [ms] (mean, across all concurrent requests)
+	Transfer rate:          0.44 [Kbytes/sec] received
+
+Here is a subset the `ab` output for the _threaded_ server:
+
+	> ab -n 100 -c 10 http://127.0.0.1:8124/
+	Concurrency Level:      10
+	Time taken for tests:   2.040 seconds
+	Complete requests:      100
+	Requests per second:    49.02 [#/sec] (mean)
+	Time per request:       204.016 [ms] (mean)
+	Time per request:       20.402 [ms] (mean, across all concurrent requests)
+	Transfer rate:          4.36 [Kbytes/sec] received
 
 Ready for more? Try [this exercise](../exercises/servers.html)
 
