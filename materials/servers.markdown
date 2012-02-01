@@ -94,6 +94,36 @@ The above code handles each request one at a time. When a connection from a clie
 
 The response time for our server will be the time it takes to handle a request plus the amount of time waiting to establish a connection. At the moment let's assume that the time waiting is 0 and the time it takes to handle one request is 200ms (and of course, each connecting client's request is given all of the server's resources for that 200ms). The throughput will be limited by the fact that we are handling one at a time, so assuming there are incoming requests are frequent enough the server will handle 5 requests/s (not an amazing feat of software engineering). Also, whenever there are more than 5 incoming requests in a second, the time waiting in the queue will begin to rise and so will the response time.
 
+## Caching
+
+Caching is a technique that can make space and time tradeoffs; a cache takes up space, with the goal of saving time. The following code illustrates the basic concept of caching:
+
+	{% highlight javascript %}
+	
+	var result = cache.get(key)
+	
+	if (!result) {
+		result = expensive_computation()
+		cache.add(key, result)
+	}
+	
+	return result
+	{% endhighlight %}
+
+The `expensive_compuation` can be expensive for multiple reasons, but in HTTP systems it is often expensive because it requires IO. For example, a resource that lives on a different machine can be cached locally (after the first time it is fetched) to save the time required to fetch it again. Similarly, a server that generates HTML pages by querying data from a database and putting that data into a template (read from the filesystem) could choose to cache in memory (1) the query result, (2) the template, or (3) the generated HTML page. In general, a server that caches data, might also need to consider schemes for expiring cache content (to avoid serving stale or expired content) and replacement schemes (to manage the cache size). [Memcached](http://en.wikipedia.org/wiki/Memcached) is a distributed memory caching system that is designed for such scenarios.
+
+[Web caches](http://en.wikipedia.org/wiki/Web_cache) (such as those maintained by web browsers) are used to avoid sending duplicate requests to remote servers for the same resource, or to at least limit the number of duplicate requests. To see why this caching can be useful, consider, for example, a user that loads a page, clicks on a link on the page, then presses the back button (reloading the original page). As another example, consider a website in which all pages have the same logo. Servers can send HTTP responses with the `Expires` or `Cache-Control` to influence how the resource it is serving is cached. The `Expires` header is the simplest and provides a way to tell the user agent (and other caches) how long the resource should be considered _fresh_, particularly useful for resources that don't change frequently or change on a predictable schedule. 
+
+	Expires: Fri, 17 Feb 2012 13:20:25 GMT
+		
+The `Cache-Control` header can similarly be used to control how long a resource should be considered fresh. 
+
+	Cache-Control: max-age=3600
+
+Additionally, if a response has a `Last-Modified` header set, subsequent requests for the same resource can use the `If-Modified-Since` header. This process is called validating and when the resource has not changed since the given data a response with a _304 Not Modified_ status code can be sent.
+
+	Last-Modified: Wed, 1 Feb 2012 04:15:15 GMT
+
 ## Apache Bench
 
 [`ab` is an HTTP server benchmarking tool]() from the Apache project. It is a very useful tool for evaluating the performance of an HTTP application server. As an example, in the following we are using `ab` to test Wikipedia. In particular we are using `ab` to send 100 requests (`-n 100`), with 10 of them being concurrent (`-c 10`).
