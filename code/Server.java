@@ -89,7 +89,7 @@ public class Server {
     public static void main(String[] args) throws IOException, InterruptedException {
         // this is the max size for the queue holding incoming requests for a
         // connection to this server
-        int backlog = 10;
+        int backlog = 10000;
         
         // create a server listening on port 8123
         ServerSocket serverSocket = new ServerSocket(8123, backlog);

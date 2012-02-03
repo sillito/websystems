@@ -8,7 +8,7 @@ This short video introduces some basic server concepts.
 
 <iframe src="http://player.vimeo.com/video/35777817?title=0&amp;byline=0&amp;portrait=0" width="720" height="540" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 
-Here is an interesting article from the Wall Street Journal about (finding the best checkout line)[http://online.wsj.com/article/SB10001424052970204770404577082933921432686.html] at a grocery store. Suppose, for example, that there are three cashiers and one line (we'll call it a queue) for customers. This system can handle at most three concurrent customers and the others must wait in the queue. When a cashier becomes available (because he or she has finished serving a previous customer), the customer at the front of the queue can be served by that cashier. New customers join the queue at the back of the line.
+Here is an interesting article from the Wall Street Journal about [finding the best checkout line](http://online.wsj.com/article/SB10001424052970204770404577082933921432686.html) at a grocery store. Suppose, for example, that there are three cashiers and one line (we'll call it a queue) for customers. This system can handle at most three concurrent customers and the others must wait in the queue. When a cashier becomes available (because he or she has finished serving a previous customer), the customer at the front of the queue can be served by that cashier. New customers join the queue at the back of the line.
 
 How happy the customers are will depend on how quickly their cashier can serve them and how long they have to wait in the queue. The store manager will also be interested in how many total customers can be moved served (that's how the store makes money after all). More specifically, while looking at the process of handling customers and trying to improve it, a grocery store manager manager might pay someone to measure two things (likely at different times of the day and week):
 
@@ -126,7 +126,7 @@ Additionally, if a response has a `Last-Modified` header set, subsequent request
 
 ## Apache Bench
 
-[`ab` is an HTTP server benchmarking tool]() from the Apache project. It is a very useful tool for evaluating the performance of an HTTP application server. As an example, in the following we are using `ab` to test Wikipedia. In particular we are using `ab` to send 100 requests (`-n 100`), with 10 of them being concurrent (`-c 10`).
+[`ab` is an HTTP server benchmarking tool](http://httpd.apache.org/docs/2.0/programs/ab.html) from the Apache project. It is a very useful tool for evaluating the performance of an HTTP application server. As an example, in the following we are using `ab` to test Wikipedia. In particular we are using `ab` to send 100 requests (`-n 100`), with 10 of them being concurrent (`-c 10`).
 
 	ab -n 100 -c 10 http://en.wikipedia.org/...
 	
