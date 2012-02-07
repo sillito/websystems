@@ -18,8 +18,8 @@ For this exercise you will need to modify the two Java servers to serve static a
 
 You should also make sure you have at least two files available for testing, such as:
 
-* public/large.png - a small image file, perhaps 10s of KBs
-* public/small.png - a larger image file, over 1MB in size
+* public/small.png - a small image file, perhaps 10s of KBs
+* public/large.png - a larger image file, over 1MB in size
 
 ## Experiments
 
