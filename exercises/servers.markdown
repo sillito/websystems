@@ -12,14 +12,14 @@ In a [previous exercise](server.html) you implemented a simple node server that 
 	
 For this exercise you will need to modify the two Java servers to serve static assets in response to HTTP requests, just like your node server. This modification will require you to replace the `Thread.sleep(200)` code with actual IO code, and to change what is written to the output stream. Once you have made these changes you will have three servers that are functionally similar:
 
-* The Node server which uses one thread, and event loop and nonblocking IO,	
+* The Node server which uses an event loop and nonblocking IO,	
 * A single threaded Java server, and
 * A threaded Java server which uses one thread for each connection.
 
 You should also make sure you have at least two files available for testing, such as:
 
-* public/large.png - a small image file, perhaps 10s of KBs
-* public/small.png - a larger image file, over 1MB in size
+* public/small.png - a small image file, perhaps 10s of KBs
+* public/large.png - a larger image file, several MBs in size
 
 ## Experiments
 

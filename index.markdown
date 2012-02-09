@@ -13,7 +13,7 @@ This material is based on fundamental concepts such as the HTTP protocol and so 
 1. [JavaScript and node materials](materials/javascript.html), [node hello world program](materials/node-hello.html) and [exercise](exercises/functions.html) 
 * [HTTP requests materials](materials/requests.html) and [exercise](exercises/bench.html)
 * [HTTP responses materials](materials/responses.html) and [exercise](exercises/server.html)
-* [Web application server basics](materials/servers.html)
+* [Web application server basics](materials/servers.html) and [exercise](exercises/servers.html)
 * HTML, the web's presentation layer
 * SQL and persistence
 * HTML forms and POST HTTP requests

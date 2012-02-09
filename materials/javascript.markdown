@@ -145,7 +145,8 @@ So these entities are functions! Constructor functions to be precise. In the fol
 	    // specific to one instance ...
 	    this.make = make;
 	    this.model = model;
-	    this.year defineyeacreate an age property here in the constructor function, but that would create a different age method for each car I created. 
+	    this.year = year;
+    }
 
 	Car.prototype.age = function() {
 	    age : function() {
