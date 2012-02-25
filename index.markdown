@@ -15,7 +15,7 @@ This material is based on fundamental concepts such as the HTTP protocol and so 
 * [HTTP responses materials](materials/responses.html) and [exercise](exercises/server.html)
 * [Web application server basics](materials/servers.html) and [exercise](exercises/servers.html)
 * HTML, the web's presentation layer and [exercise](exercises/serving-html.html)
-* SQL and persistence
+* SQL and persistence and [exercise](exercises/sql.html)
 * HTML forms and POST HTTP requests
 * HTTP and state (session management)
 * CSS (Cascading Style Sheets)
