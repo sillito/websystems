@@ -64,7 +64,7 @@ The following screenshot list many of the HTML elements that make up forms. On t
 
 ### Hidden input
 
-Hidden inputs are used to send data to a server as part of a form submission, but there is not corresponding visual element for that data.
+Hidden inputs are used to send data to a server as part of a form submission, but there is no corresponding visual element for that data.
 
 {% highlight html %}
 <input type="hidden" name="key" value="98jasd0237jh" />&nbsp;
@@ -81,14 +81,12 @@ Hidden inputs are used to send data to a server as part of a form submission, bu
 </select>
 {% endhighlight %}
 
-<form>
 <select name="city">
     <option value="calgary">Calgary</option>
     <option>Edmonton</option>
     <option selected>Lethbridge</option>
     <option value="red deer">Red Deer</option>
 </select>
-</form>
 
 ### (Submit) buttons
 
@@ -181,14 +179,57 @@ In the server code, there is a line that is responsible for parsing the body of 
 
 ## Multipart forms and file uploads
 
-One of the form elements listed in the screenshot above is an input of type `file`. This element allows a user to upload a file to the server. In this case the file contents are part of the post request. For this to work the form needs to be declared as "multpart" using the `enctype` attribute (note that the default `enctype` is "application/x-www-form-urlencoded").
+One additional kind of form input element is an input of type `file`. This element allows a user to upload a file to the server. In this case the file contents are part of the post request. For this to work the form needs to be declared as "multipart" using the `enctype` attribute (note that the default `enctype` is "application/x-www-form-urlencoded"). In the following example, a file can be given a title and uploaded.
 
 {% highlight html %}
-<form action="/photo/add" method="post" enctype="multipart/form-data">
-    <input type="file" name="photo" chars="40"/><br>
-    <input type="submit" />
+<form action="/document/save" method="post" enctype="multipart/form-data">
+        <label for="name">Document name</label>
+        
+        <input type="text" name="name" placeholder="Give your document a name"/>
+        
+        <input type="file" name="document" chars="40"/>
+        
+        <button type="submit">Save</button>
 </form>
 {% endhighlight %}
 
-More details on multipart forms will be added here shortly.
+The following shows the body of the HTTP POST request sent by the browser when the above form is submitted. Note that all form values are sent as separate entries and are delimited by a browser specific, randomized element. The following assumes that the user entered the string "Shopping list" in the text box and selected a simple text file (named list.txt) with three lines of text into. 
+
+    ------WebKitFormBoundary5WUbG5EkC02mJuBC
+    Content-Disposition: form-data; name="name"
+
+    Shopping list
+    ------WebKitFormBoundary5WUbG5EkC02mJuBC
+    Content-Disposition: form-data; name="document"; filename="list.txt"
+    Content-Type: text/plain
+
+    A dozen eggs
+    Cheese
+    Sour creme
+    ------WebKitFormBoundary5WUbG5EkC02mJuBC--
+
+As another example, following shows the body of the HTTP POST request when the user enters the string "A simple image" in the text box and selects a small png image as the file:
+
+
+    ------WebKitFormBoundarylBV4zXAfCB3A8qtJ
+    Content-Disposition: form-data; name="name"
+
+    A simple image
+    ------WebKitFormBoundarylBV4zXAfCB3A8qtJ
+    Content-Disposition: form-data; name="document"; filename="img.png"
+    Content-Type: image/png
+
+    �PNG
+
+    IHDR
+    �  $��tEXtSoftwareAdobe ImageReadyq�e<�IDATxڴT�
+      ,N਎�
+    N��A���\�K�aw�W%�pD�HLϚ&�G�B������ី4�
+    ���`s\��IAU0�������uxi���
+    ���Ӭ<��
+    �+( XU�u�n���� 
+                   p�my���
+                          N�'�����K:oԬ���%�]���_
+                                                OIEND�B`�
+    ------WebKitFormBoundarylBV4zXAfCB3A8qtJ--
 
