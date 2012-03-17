@@ -18,7 +18,7 @@ This material is based on fundamental concepts such as the HTTP protocol and so 
 * SQL and persistence and [exercise](exercises/sql.html)
 * [HTML forms and POST HTTP requests](materials/forms.html) and [exercise](exercises/forms.html)
 * [HTTP and state](materials/cookies.pdf) (session management) and [exercise](exercises/cookies.html)
-* [CSS (Cascading Style Sheets)](materials/css.pdf)
+* [CSS (Cascading Style Sheets)](materials/css.pdf) and [exercise](exercises/css.html)
 * DOM model and API
 * Client side programming with jQuery
 * Asynchronous HTTP requests (using jQuery)
