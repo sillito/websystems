@@ -19,8 +19,6 @@ In the previous exercises you created parts of a photo stream generator web appl
                                  otherwise
     ---------------------------------------------------------------------------
 
-## CSS files
-
 Create a directory called `css` and arrange that your server can server static assets from that directory. In that directory create a file called `site.css` with some style information for all of your pages.
 
 ## List of streams
@@ -53,9 +51,9 @@ Revise your code so that it creates a thumbnail of every image uploaded to a str
 
 ## Stream view
 
-Users can select individual streams from the above list to view their content. Create a page (or revise your existing page) that displays the thumbnails and photo information for an individual stream. However, unlike the past that you retrieved stream details from the file system, photo information now has to be retrieved from the database (though the thumbnails are still stored on the file system). The following screenshot displays the thumbnail view of the 'School' stream owned by 'Sally Brown'.
+Users can select individual streams from the above list to view their content. Create a page (or revise your existing page) that displays the thumbnails and photo information for an individual stream. However, unlike the past when you retrieved stream details from the file system, photo information now has to be retrieved from the database (though the thumbnails are still stored on the file system). The following screenshot displays the thumbnail view of the 'School' stream owned by 'Sally Brown'.
 
 ![Stream](stream.png)
 
-All photos and photo information sections have to be aligned as shown in the screenshot above. The photo information section is placed on the right side of each photo and displays its title and upload time. You will need to use CSS to get style the stream page as shown. To do this create a directory called `css` and arrange that your server can server static assets from that directory. Create a file called stream.css.
+All photos and photo information sections have to be aligned as shown in the screenshot above. The photo information section is placed on the right side of each photo and displays its title and upload time. You will need to use CSS to get style the stream page as shown.
 
